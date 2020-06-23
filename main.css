@@ -1,0 +1,76 @@
+body{
+  font-family: sans-serif;
+  background: rgb(182,178,252);
+  background: linear-gradient(90deg, rgba(182,178,252,1) 0%, rgba(20,205,242,1) 100%);
+}
+
+.container{
+  margin: 120px auto 0;
+  flex-direction: column;
+  align-items: center;
+  width: 360px;
+  border-radius: 3%;
+  height: 500px;
+  box-shadow: 0 0 20px 0 black;
+  overflow: hidden;
+}
+.display-field{
+  position: relative;
+  height: 100px;
+  width: 360px;
+  background-color: white;
+  overflow: hidden;
+}
+.buttons-container{
+  display: grid;
+  justify-content: center;
+  grid-template-rows: repeat(5, 80px);
+  grid-template-columns: repeat(4, 90px);
+
+}
+.button{
+  font-size: 1.5rem;
+  padding: 0;
+  border-width: 0.1px;
+}
+
+button:active {
+    transform: scale(1.1);
+}
+.top{
+  background-color: #a2c3fc;
+  border-top-width: 0px;
+
+}
+.top:hover{
+  background-color: #d2e0f7;
+}
+.side{
+  background-color: #7f85c7;
+}
+.side:hover{
+  background-color: #b0b6f5;
+}
+.active{
+  background-color: #fa883c;
+}
+.central:hover{
+  background-color: #fa883c;
+}
+.equal{
+  background-color: #b43cfa;
+}
+.equal:hover{
+  background-color:#c774f7;
+}
+]
+.display-field:hover{
+  background-color: #f7f7f7;
+}
+#text-field{
+  right: 10px;
+  position: absolute;
+  bottom: 20px;
+  font-size: 2.5rem;
+  color: gray;
+}
