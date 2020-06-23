@@ -14,17 +14,17 @@ function sendInformation(e){
   if (current.length >0){
     current[0].className = current[0].className.replace(" active", "");
   }
-  if (e.target.classList.contains("number")){
-    if(stored_values.currentOperator != ""){
 
-        stored_values.previousNumber = stored_values.currentNumber;
+  if (e.target.classList.contains("number")){
+    if(stored_values.currentOperator != ""){ //Check if there is a waiting operator
+        stored_values.previousNumber = stored_values.currentNumber; // If there is, push all current to previous and clear the display
         console.log(stored_values.previousNumber);
         stored_values.previousOperator = stored_values.currentOperator;
         stored_values.currentOperator = "";
         text_field.innerHTML = "";
     }
 
-    if (text_field.innerHTML.toString().includes(".") && e.target.innerHTML.toString() == ".") return
+    if (text_field.innerHTML.toString().includes(".") && e.target.innerHTML.toString() == ".") return //Make sure user can't enter 2 . sign
     text_field.innerHTML += e.target.innerHTML.toString();
   }
   else if(e.target.classList.contains("reset")){
@@ -97,13 +97,25 @@ function substract (a, b) {return a - b;}
 function multiply (a, b) {return a * b;}
 function divide (a, b) {return a / b;}
 function formatResult (result) {
-     // Too large decimales are rounded
+
      result = +result.toFixed(12);
 
-     // Too large value are diplayed in scientific notation
+
      if (result.toString().length > 10) {
          result = result.toExponential(6);
      }
      return result;
 }
-buttons.forEach(button => button.addEventListener("click", sendInformation));
+function convertToInformation(e){
+  console.log(e.which);
+  buttons.forEach(button => {
+        console.log(button.dataset.key);
+        if (button.dataset.key == e.which) {
+            button.click();
+            console.log(e.which);
+            return;
+        };
+    });
+}
+document.addEventListener("keydown", convertToInformation);
+buttons.forEach(button => button.addEventListener("click", sendInformation)); // Add click event
